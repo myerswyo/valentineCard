@@ -1,0 +1,115 @@
+//CORE SASS File
+
+//variable
+
+$corners: 8px;
+
+
+
+// PLACEHOLDER
+
+%roundCorner {
+  border-radius: $corners;
+}
+
+%cardDimensions{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width:  100%;
+
+
+}
+
+%flexCenter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body{
+  height: 100vh;
+  width: 100vw;
+  perspective: 500px;
+ @extend %flexCenter;
+ background-color: #f3cdde;
+background-image: linear-gradient(315deg, #f3cdde 49%, #FEE140 80%, #ffffff 100%);
+
+}
+
+.card{
+  height: 300px;
+  width:  600px;
+  position: relative;
+  transform-style: preserve-3d;
+  border-radius: 5px; //why no round corners?
+  box-shadow: 3px 3px 15px rgba(0,0,0,.25);
+  transition: 1.25s;
+
+  &:hover{
+    transform: rotateX(-180deg);
+  }
+}
+
+.front{
+  @extend %cardDimensions;
+  @extend %flexCenter;
+  @extend %roundCorner;
+  font-family: 'Satisfy', sans-serif;
+  font-size: 4em;
+  text-shadow: 2px 2px 10px rgba(0,0,0,.75);
+
+  background:url('IMGS/yellowRose.jpg') no-repeat;
+  background-position: 0px -70px;
+  background-size: cover;
+  color: #FEF4FF;
+  z-index: 2;
+  backface-visibility: hidden;
+
+  #amber{
+    color: #FEDCFF;
+  }
+
+  span{
+    transform:skewY(-10deg);
+    // transform:matrix3d(55deg);
+    text-align: center;
+  }
+}
+
+.back{
+  @extend %cardDimensions;
+  @extend %flexCenter;
+  @extend %roundCorner;
+  font-family: 'Coming Soon', sans-serif;
+  font-size: 4em;
+  background:url('IMGS/twoPups.jpg') no-repeat;
+  background-position: 0px -70px;
+  background-size: cover;
+  color: #FFFFFF;
+  z-index: 1;
+  transform: rotateX(-180deg);
+  backface-visibility: hidden;
+
+    span{
+        color: pink;
+        text-shadow: 3px 3px 5px rgba(0,0,0,.5);
+    }
+
+  #heart {
+    position: absolute;
+    width: 100px;
+    bottom: 20px;
+    right: 50px;
+    transition: all 1s ease-in-out;
+
+    &:hover{
+      width: 2000px;
+      opacity: 0;
+
+
+
+    }
+}
+}
